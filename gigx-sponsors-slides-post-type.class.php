@@ -2,14 +2,14 @@
 /*
  * Set values for post type
  */
-class GIGX_Post_Type {
-  	var $post_type_name = 'gigx_slide';
+class GIGX_Sponsors_Slides_Post_Type {
+  	var $post_type_name = 'gigx_sponsors_slide';
   	var $handle = 'gigx-meta-box';
   	var $attachments = null;
   
   	var $post_type = array(
-  		'label' => 'GIGX Slides',
-  		'singular_label' => 'GIGX Slide',
+  		'label' => 'GIGX Sponsors Slides',
+  		'singular_label' => 'GIGX Sponsors Slide',
   		'menu_position' => '1',
   		'taxonomies' => array(),
   		'public' => true,
@@ -19,7 +19,7 @@ class GIGX_Post_Type {
   		'supports' => array( 'title', 'editor','thumbnail' )
   		); // 'custom-fields'
     		  
-  	function GIGX_Post_Type() {
+  	function GIGX_Sponsors_Slides_Post_Type() {
   		return $this->__construct();
   	}
   
@@ -47,9 +47,9 @@ class GIGX_Post_Type {
     		register_post_type( $this->post_type_name, $this->post_type );
     		add_action('save_post', array( &$this,'mytheme_save_data'));
         # custom icon
-        add_action('admin_head', array( &$this,'gigx_slide_icon'));
+        add_action('admin_head', array( &$this,'gigx_sponsors_slide_icon'));
         # custom thumbnail size
-        add_image_size( 'gigx-slide', 300, 225 );
+        add_image_size( 'gigx-sponsors-slide', 300, 225 );
         
         # change title text (only works for wp >=3.1)
         add_filter( 'enter_title_here', array( &$this, 'gigx_change_default_title') );            
@@ -57,21 +57,21 @@ class GIGX_Post_Type {
   	# change title text        
     function gigx_change_default_title( $title ){
       $screen = get_current_screen();
-      if  ( 'gigx_slide' == $screen->post_type ) {
+      if  ( 'gigx_sponsors_slide' == $screen->post_type ) {
         $title = 'Enter Slide Title';
       }
       return $title;
     }  	
-  	function gigx_slide_icon() {
+  	function gigx_sponsors_slide_icon() {
       	global $post_type;
       	$url = plugin_dir_url( __FILE__ );
       	?>
       	<style>
-      	<?php if (($_GET['post_type'] == 'gigx_slide') || ($post_type == 'gigx_slide')) : ?>
+      	<?php if (($_GET['post_type'] == 'gigx_sponsors_slide') || ($post_type == 'gigx_sponsors_slide')) : ?>
       	#icon-edit { background:transparent url('<?php echo $url .'images/icon32x32.png';?>') no-repeat; }		
       	<?php endif; ?>
-      	#adminmenu #menu-posts-gigxslide div.wp-menu-image{background: url("<?php echo $url .'images/icon.png';?>") no-repeat 6px -17px !important;}
-      	#adminmenu #menu-posts-gigxslide:hover div.wp-menu-image,#adminmenu #menu-posts-gallery.wp-has-current-submenu div.wp-menu-image{background-position:6px 7px!important;}	    	
+      	#adminmenu #menu-posts-gigxsponsorsslide div.wp-menu-image{background: url("<?php echo $url .'images/icon.png';?>") no-repeat 6px -17px !important;}
+      	#adminmenu #menu-posts-gigxsponsorsslide:hover div.wp-menu-image,#adminmenu #menu-posts-gallery.wp-has-current-submenu div.wp-menu-image{background-position:6px 7px!important;}	    	
       	
         </style>
         <?php
@@ -91,16 +91,16 @@ class GIGX_Post_Type {
   			$p = new stdClass();
   			$p->post_title = get_the_title();
   			$p->post_excerpt = get_the_content();
-        $p->post_url= get_post_meta($child['post_parent'], 'gigx_slide_url', true);
-  			$p->post_tab= get_post_meta($child['post_parent'], 'gigx_slide_tab', true);
-        $p->post_limit= get_post_meta($child['post_parent'], 'gigx_slide_limit', false);      
+        $p->post_url= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_url', true);
+  			$p->post_tab= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_tab', true);
+        $p->post_limit= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_limit', false);      
         
         if( ( $c = count( $attachments ) ) > 1 ) {
   				$x = rand( 1, $c );
   				while( $c > $x++ )
   					next( $attachments );
   			}
-  			$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'gigx-slide',false);
+  			$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'gigx-sponsors-slide',false);
   			$p->image = '<img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/>';
   			$gallery[] = $p;
   		}

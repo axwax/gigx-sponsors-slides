@@ -1,4 +1,4 @@
-=== GIGX Slides Widget ===
+=== GIGX Sponsors Slides Widget ===
 Tags: custom, post, gallery, widget
 Requires at least: 3.0
 Tested up to: 3.1
@@ -20,7 +20,7 @@ This plugin adds a Featured Slides menu to your WordPress dashboard. To add cont
 
 When multiple images are attached to a Gallery Post one of the images is randomly selected to be shown on each page view.
 
-[Plugin Page](http://gigx.co.uk/wordpress/plugins/gigx-slides-widget/)
+[Plugin Page](http://gigx.co.uk/wordpress/plugins/gigx-sponsors-slides-widget/)
 
 Credits:
 This plugin is based on Post Gallery Widget by Ron Rennick 
@@ -30,17 +30,11 @@ Update code by Janis Elsts.
 
 == Installation ==
 
-1. Upload the entire `gigx-gallery-widget` folder to the `/wp-content/plugins/` directory
+1. Upload the entire `gigx-sponsors-slides` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
 
 = 0.0.3 =
-* Uploaded to GitHub
-* Changed tooltip to tipTip
-= 0.0.2 =
-* Added automatic update function.
-* Added sorting option.
-= 0.0.1 =
-* Original version.
+* Original version, forked from GIGX Slides v0.0.3
 

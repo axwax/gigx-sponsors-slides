@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {		
-	var videoList = $('#gigx-slides-list');
+	var videoList = $('#gigx-sponsors-slides-list');
  
 	videoList.sortable({
 		update: function(event, ui) {
