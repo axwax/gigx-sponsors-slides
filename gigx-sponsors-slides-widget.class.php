@@ -19,8 +19,11 @@ class GIGX_Sponsors_Slides_Widget extends WP_Widget {
 		global $gigx_sponsors_slide_type;
 		extract( $args );
 		echo $before_widget; ?>			
-    <div class="gigx-sponsors-slideshow">				
+    <div class="gigx-sponsors-slideshow">	
+            <h2 class="widget-title">... now a message from our sponsors:</h2>
+			
       <div class="gigx-sponsors-slideshow-wrapper">
+        <ul class="hoverfade" id="slider1">   
 <?php		$first = true;
 		$num_posts = -1;
 		//if( $instance['how_many'] > 0 ) $num_posts = $instance['how_many'];
@@ -39,33 +42,21 @@ class GIGX_Sponsors_Slides_Widget extends WP_Widget {
           }
           if($showslide){
               $count++;
-                  ?>  		
-                <div class="gigx-sponsors-slide<?php echo ' gigx-sponsors-slide'.$count;  ?>">			    
-                  <div class="gigx-sponsors-slide-text">            <h1>
-                      <?php echo $p->post_title; ?></h1>            
-                    <p>
-                      <?php echo $p->post_excerpt; ?><br />
-                    </p>  			  
-                  </div>                 
-                  <?php if (($p->post_url)&&($p->post_url<>"http://")) {?>
-                  <a href="<?php echo $p->post_url; ?>" title="
-                    <?php echo $p->post_title; ?>">
-                    <?php } ?>          
-                    <?php echo $p->image; ?>          
-                    <?php if (($p->post_url)&&($p->post_url<>"http://")) {?></a>
-                  <?php } ?>		
-                </div>
-                <?php				
-              $pagermenu.='<li class="gigx-sponsors-slideshow-pagerbutton gigx-sponsors-slideshow-pagerbutton'.$count.'" title="'.$p->post_title.'"><a href="'.$p->post_url.'">'.$p->post_tab.'</a></li>';
-              $first = false;
-          }   
-			}
-		}
-    ?>				
-      </div>        
-      <ul class="gigx-sponsors-slideshow-pager">
-        <?php echo $pagermenu; ?>
-      </ul>				
+              if (($p->post_url)&&($p->post_url<>"http://"))$url=$p->post_url;
+              else $url=home_url();
+              if ($p->image)$img=$p->image;
+              //else $img=plugin_dir_url( __FILE__ )."images/default.png";
+              
+                  ?>
+             <li class="gigx-sponsors-slides-tip" title="<?php if ($p->post_excerpt) echo $p->post_excerpt; else echo $p->post_title; ?>"><a href="<?php echo $url; ?>" target="_blank"><?php echo $img; ?></a></li>
+<?php 
+               $first = false;
+          } // end if($swhowslide)  
+			} // end foreach
+		} // end if (!empty)
+    ?>         		
+        </ul>
+      </div>        			
       <div style="clear:both;">
       </div>			
     </div>
