@@ -1,11 +1,11 @@
 var $gigx_sponsors_slides = jQuery.noConflict();
 
 $gigx_sponsors_slides(document).ready(function() {
+
+  // only display slideshow when fully loaded
     $gigx_sponsors_slides('.gigx-sponsors-slideshow').show("slow");
     
-    
-    
-    
+  // add slideshow  
     $gigx_sponsors_slides('#slider1').bxSlider({
         mode: 'horizontal',
         infiniteLoop: true,
@@ -18,15 +18,15 @@ $gigx_sponsors_slides(document).ready(function() {
     		moveSlideQty: 1,
         autoHover: true    
 		});   
-
 	
 	//make slides clickable
     //$gigx_sponsors_slides('div.gigx-sponsors-slide').clickable();
           
-	//tooltips 
+	// tooltips 
+    $gigx_sponsors_slides(".gigx-sponsors-slides-tip").tipTip({maxWidth: "200px", edgeOffset: 3, delay: 0, defaultPosition: "top",fadeIn: 100, fadeOut: 200});
 
-        $gigx_sponsors_slides(".gigx-sponsors-slides-tip").tipTip({maxWidth: "200px", edgeOffset: 3, delay: 0, defaultPosition: "top",fadeIn: 100, fadeOut: 200});
-        $gigx_sponsors_slides(".gigx-sponsors-slides-tip a img").removeAttr('title').removeAttr('alt');
+  // remove duplicate tooltip on image
+    $gigx_sponsors_slides(".gigx-sponsors-slides-tip a img").removeAttr('title').removeAttr('alt');
 
           
 });
