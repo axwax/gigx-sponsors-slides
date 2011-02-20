@@ -23,39 +23,41 @@ class GIGX_Sponsors_Slides_Widget extends WP_Widget {
             <h2 class="widget-title">... now a message from our sponsors:</h2>
 			
       <div class="gigx-sponsors-slideshow-wrapper">
-        <ul class="hoverfade" id="slider1">   
-<?php		$first = true;
-		$num_posts = -1;
-		//if( $instance['how_many'] > 0 ) $num_posts = $instance['how_many'];
-			
-		if( !empty( $gigx_sponsors_slide_type ) ) {
-			$posts = $gigx_sponsors_slide_type->query_posts( $num_posts );
-			$pagermenu='';
-			$count=0;
-			foreach( $posts as $p ) {
-    			$numdays=count($p->post_limit);
-    			$showslide=true;
-          if ($numdays>0){
-            foreach ($p->post_limit as $d){
-              if(strtolower(date('D'))==$d) $showslide=false;
+        <div class="gigx-sponsors-slideshow-inner-wrapper">
+          <ul class="hoverfade" id="slider1">   
+  <?php		$first = true;
+  		$num_posts = -1;
+  		//if( $instance['how_many'] > 0 ) $num_posts = $instance['how_many'];
+  			
+  		if( !empty( $gigx_sponsors_slide_type ) ) {
+  			$posts = $gigx_sponsors_slide_type->query_posts( $num_posts );
+  			$pagermenu='';
+  			$count=0;
+  			foreach( $posts as $p ) {
+      			$numdays=count($p->post_limit);
+      			$showslide=true;
+            if ($numdays>0){
+              foreach ($p->post_limit as $d){
+                if(strtolower(date('D'))==$d) $showslide=false;
+              }
             }
-          }
-          if($showslide){
-              $count++;
-              if (($p->post_url)&&($p->post_url<>"http://"))$url=$p->post_url;
-              else $url=home_url();
-              if ($p->image)$img=$p->image;
-              //else $img=plugin_dir_url( __FILE__ )."images/default.png";
-              
-                  ?>
-             <li class="gigx-sponsors-slides-tip" title="<?php if ($p->post_excerpt) echo $p->post_excerpt; else echo $p->post_title; ?>"><a href="<?php echo $url; ?>" target="_blank"><?php echo $img; ?></a></li>
-<?php 
-               $first = false;
-          } // end if($swhowslide)  
-			} // end foreach
-		} // end if (!empty)
-    ?>         		
-        </ul>
+            if($showslide){
+                $count++;
+                if (($p->post_url)&&($p->post_url<>"http://"))$url=$p->post_url;
+                else $url=home_url();
+                if ($p->image)$img=$p->image;
+                //else $img=plugin_dir_url( __FILE__ )."images/default.png";
+                
+                    ?>
+               <li class="gigx-sponsors-slides-tip" title="<?php if ($p->post_excerpt) echo $p->post_excerpt; else echo $p->post_title; ?>"><a href="<?php echo $url; ?>" target="_blank"><?php echo $img; ?></a></li>
+  <?php 
+                 $first = false;
+            } // end if($swhowslide)  
+  			} // end foreach
+  		} // end if (!empty)
+      ?>         		
+          </ul>
+        </div><?php /* inner-wrapper */ ?>  
       </div>        			
       <div style="clear:both;">
       </div>			
