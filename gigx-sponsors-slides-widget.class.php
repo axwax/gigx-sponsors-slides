@@ -27,7 +27,6 @@ class GIGX_Sponsors_Slides_Widget extends WP_Widget {
           <ul class="gigx-sponsors-slider">   
   <?php		$first = true;
   		$num_posts = -1;
-  		//if( $instance['how_many'] > 0 ) $num_posts = $instance['how_many'];
   			
   		if( !empty( $gigx_sponsors_slide_type ) ) {
   			$posts = $gigx_sponsors_slide_type->query_posts( $num_posts );
@@ -71,14 +70,6 @@ class GIGX_Sponsors_Slides_Widget extends WP_Widget {
 		return $new_instance;
 	}
 	function form( $instance ) { ?>		
-<p>
-  <label for="<?php echo $this->get_field_id('how_many'); ?>">
-    <?php _e('How many gallery posts:') ?>
-  </label>		
-  <input type="text" id="<?php echo $this->get_field_id('how_many'); ?>" name="
-  <?php echo $this->get_field_name('how_many'); ?>" value="
-  <?php echo ( $instance['how_many'] > 0 ? esc_attr( $instance['how_many'] ) : '' ); ?>" />
-</p>		
 <?php	}
 	function wp_head() {
 		if( !is_admin() ) {
