@@ -16,7 +16,7 @@ class GIGX_Sponsors_Slides_Post_Type {
   		'show_ui' => true,
   		'rewrite' => false,
   		'query_var' => false,
-  		'supports' => array( 'title', 'editor','thumbnail' )
+  		'supports' => array( 'thumbnail' )
   		); // 'custom-fields'
     		  
   	function GIGX_Sponsors_Slides_Post_Type() {
@@ -89,11 +89,12 @@ class GIGX_Sponsors_Slides_Post_Type {
   			
   
   			$p = new stdClass();
-  			$p->post_title = get_the_title();
-  			$p->post_excerpt = get_the_content();
+  			//$p->post_title = get_the_title();
+  			//$p->post_excerpt = get_the_content();
+  			$p->post_title= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_title', true);
         $p->post_url= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_url', true);
-  			$p->post_tab= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_tab', true);
-        $p->post_limit= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_limit', false);      
+  			//$p->post_tab= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_tab', true);
+        //$p->post_limit= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_limit', false);      
         
         if( ( $c = count( $attachments ) ) > 1 ) {
   				$x = rand( 1, $c );
@@ -109,10 +110,54 @@ class GIGX_Sponsors_Slides_Post_Type {
   	}
   	function admin_menu() {
   		add_action( 'do_meta_boxes', array( &$this, 'add_metabox' ), 9 );
-  	}
-  	
-  
-        
+  	}        
 }
+
+/* Customise columns shown in list of custom post type */
+add_action("manage_posts_custom_column", "my_custom_columns");
+add_filter("manage_edit-gigx_sponsors_slide_columns", "my_website_columns");
+ 
+function my_website_columns($columns)
+{
+    $columns = array(
+        "cb" => "<input type=\"checkbox\" />",        
+        "linktitle" => "Link Title",
+        "url" => "Link URL",
+        "linkimage" => "Featured Image"       
+    );
+    return $columns;
+}
+ 
+function my_custom_columns($column)
+{
+    global $post;
+    if ("ID" == $column) echo $post->ID;
+    elseif ("url" == $column) {
+        $url = get_post_meta($post->ID, "gigx_sponsors_slide_url", $single=true);
+        echo "<a href=\"$url\" target=\"_blank\">$url</a>";
+    }
+    elseif ("linktitle" == $column) {
+        $title = get_post_meta($post->ID, "gigx_sponsors_slide_title", $single=true);
+        edit_post_link($title, '<p><strong>', '</strong></p>',$post->ID);
+    } 
+    elseif ("linkimage" == $column) {
+        $title = get_post_meta($post->ID, "gigx_sponsors_slide_title", $single=true);
+        $img=wp_get_attachment_image_src (get_post_thumbnail_id($post->ID),array(64,64),false);
+  			$image = '<img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$title.'" title="'.$title.'"/>';
+        edit_post_link($image, '<p><strong>', '</strong></p>',$post->ID);
+    }    
+}
+
+/* remove links menu */
+function remove_menus () {
+global $menu;
+	$restricted = array(__('Links'));
+	end ($menu);
+	while (prev($menu)){
+		$value = explode(' ',$menu[key($menu)][0]);
+		if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
+	}
+}
+add_action('admin_menu', 'remove_menus');
 
 ?>

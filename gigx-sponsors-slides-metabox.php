@@ -21,34 +21,19 @@ if (!class_exists('RW_Meta_Box')) require 'meta-boxes-2.4.php';
       	'priority' => 'high', // high, low (optional)
       	'fields' => array(
       		array(
-            'name' => 'URL',
+            'name' => 'Link Title',
+            'desc' => 'Title of the page the slide links to',
+            'id' => $prefix .'title',
+            'type' => 'text',
+            'std' => ''
+      		),
+      		array(
+            'name' => 'Link URL',
             'desc' => 'URL of the page the slide links to',
             'id' => $prefix .'url',
             'type' => 'text',
             'std' => 'http://'
-      		),
-      		array(
-            'name' => 'Tab Label',
-            'desc' => 'Label for the slide\'s tab',
-            'id' => $prefix.'tab',
-            'type' => 'text',
-            'std' => 'Slide'
-      		),
-          array(
-              'name' => 'Don\'t show Slide on',
-              'desc' => 'Don\'t display this slide on the following days:',
-              'id' => $prefix.'limit',
-              'type' => 'multicheck',
-              'options' => array(
-                  'mon' => 'Monday',
-                  'tue' => 'Tuesday',
-                  'wed' => 'Wednesday',
-                  'thu' => 'Thursday',
-                  'fri' => 'Friday',
-                  'sat' => 'Saturday',
-                  'sun' => 'Sunday'            
-              ),
-          )
+      		)
       	)
       );
       foreach ($meta_boxes as $meta_box) {
