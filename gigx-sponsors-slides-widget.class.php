@@ -24,7 +24,7 @@ class GIGX_Sponsors_Slides_Widget extends WP_Widget {
 			
       <div class="gigx-sponsors-slideshow-wrapper">
         <div class="gigx-sponsors-slideshow-inner-wrapper">
-          <ul class="hoverfade" id="slider1">   
+          <ul class="gigx-sponsors-slider">   
   <?php		$first = true;
   		$num_posts = -1;
   		//if( $instance['how_many'] > 0 ) $num_posts = $instance['how_many'];
@@ -87,7 +87,6 @@ class GIGX_Sponsors_Slides_Widget extends WP_Widget {
 			wp_enqueue_style( 'gigx-sponsors-slides-css', $url . 'css/style.css' );
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'gigx-bxslider-js', $url . 'js/jquery.bxSlider.min.js', array( 'jquery' ), '1.4', true );
-			wp_enqueue_script( 'gigx-clickable-js', $url . 'js/jquery.clickable-0.1.9.js', array( 'jquery' ), '1.4', true );
       wp_enqueue_script( 'gigx-tooltip-js', $url . 'js/jquery.tipTip.minified.js', array( 'jquery' ), '1.4', true );
 			wp_enqueue_script( 'gigx-sponsors-slides-js', $url . 'js/gigx-sponsors-slides.js', false, false, true );
 		}

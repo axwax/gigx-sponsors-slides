@@ -1,7 +1,8 @@
 <?php
-/*
- * Set values for post type
- */
+
+# creates GIGX Sponsors Slides post type
+# and contains query function for widget
+
 class GIGX_Sponsors_Slides_Post_Type {
   	var $post_type_name = 'gigx_sponsors_slide';
   	var $handle = 'gigx-meta-box';
@@ -112,52 +113,4 @@ class GIGX_Sponsors_Slides_Post_Type {
   		add_action( 'do_meta_boxes', array( &$this, 'add_metabox' ), 9 );
   	}        
 }
-
-/* Customise columns shown in list of custom post type */
-add_action("manage_posts_custom_column", "my_custom_columns");
-add_filter("manage_edit-gigx_sponsors_slide_columns", "my_website_columns");
- 
-function my_website_columns($columns)
-{
-    $columns = array(
-        "cb" => "<input type=\"checkbox\" />",        
-        "linktitle" => "Link Title",
-        "url" => "Link URL",
-        "linkimage" => "Featured Image"       
-    );
-    return $columns;
-}
- 
-function my_custom_columns($column)
-{
-    global $post;
-    if ("ID" == $column) echo $post->ID;
-    elseif ("url" == $column) {
-        $url = get_post_meta($post->ID, "gigx_sponsors_slide_url", $single=true);
-        echo "<a href=\"$url\" target=\"_blank\">$url</a>";
-    }
-    elseif ("linktitle" == $column) {
-        $title = get_post_meta($post->ID, "gigx_sponsors_slide_title", $single=true);
-        edit_post_link($title, '<p><strong>', '</strong></p>',$post->ID);
-    } 
-    elseif ("linkimage" == $column) {
-        $title = get_post_meta($post->ID, "gigx_sponsors_slide_title", $single=true);
-        $img=wp_get_attachment_image_src (get_post_thumbnail_id($post->ID),array(64,64),false);
-  			$image = '<img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$title.'" title="'.$title.'"/>';
-        edit_post_link($image, '<p><strong>', '</strong></p>',$post->ID);
-    }    
-}
-
-/* remove links menu */
-function remove_menus () {
-global $menu;
-	$restricted = array(__('Links'));
-	end ($menu);
-	while (prev($menu)){
-		$value = explode(' ',$menu[key($menu)][0]);
-		if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
-	}
-}
-add_action('admin_menu', 'remove_menus');
-
 ?>

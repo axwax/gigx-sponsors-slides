@@ -1,4 +1,7 @@
 <?php
+
+# Sorting functionality for GIGX Sponsors Slides
+
 /**
  * Enable Sort menu
  *

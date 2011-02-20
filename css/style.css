@@ -1,68 +1,63 @@
 /*
-CSS for the gallery widget
+GIGX Sponsors Slides CSS
 */
-
 
 /* general slideshow styles */
 .gigx-sponsors-slideshow{
-    clear: both;
-    width: 1020px;
-
-    padding:0; 
-    margin-bottom: 10px;
-
-display: none;       
+  clear: both;
+  width: 1020px;
+  padding:0; 
+  margin-bottom: 10px;
+  display: none;       
 }   
 .gigx-sponsors-slideshow a {
-   outline: 0;
+  outline: 0;
 }
-
 .gigx-sponsors-slideshow .widget-title{
-z-index: 1;
-margin-bottom: 10px;  
+  z-index: 1;
+  margin-bottom: 10px;  
 }
 .gigx-sponsors-slideshow-wrapper {
-background-color:#fff;
-color:#333333;
-    border-radius: 5px;
-    -moz-border-radius: 5px;    
-    -moz-box-shadow: 5px 5px 5px #333; 
-    -webkit-box-shadow: 5px 5px 5px #333; 
-    box-shadow: 5px 5px 5px #333;
-    margin: 0; 
-    padding: 10px 0;   
+  background-color:#fff;
+  color:#333333;
+  border-radius: 5px;
+  -moz-border-radius: 5px;    
+  -moz-box-shadow: 5px 5px 5px #333; 
+  -webkit-box-shadow: 5px 5px 5px #333; 
+  box-shadow: 5px 5px 5px #333;
+  margin: 0; 
+  padding: 10px 0;   
 }
 .gigx-sponsors-slideshow-inner-wrapper {
-  	margin: 0 auto 0 auto;  
-    padding: 0; 
-    text-align: center;
-    width: 840px;
+  margin: 0 auto 0 auto;  
+  padding: 0; 
+  text-align: center;
+  width: 840px;
 }    
 
 .gigx-sponsors-slideshow-wrapper li{
-margin:0;
-padding:0;
-width:280px;
-text-align:center;
-display: table;
+  margin:0;
+  padding:0;
+  width:280px;
+  text-align:center;
+  display: table;
 }
 .gigx-sponsors-slideshow-wrapper a{
-margin:0;
-padding:0;
-display: table-cell; vertical-align: middle;
+  margin:0;
+  padding:0;
+  display: table-cell; vertical-align: middle;
 }
 .gigx-sponsors-slideshow-wrapper li a img{
-margin:0;
-padding:0;
-border:0;
+  margin:0;
+  padding:0;
+  border:0;
 }
 
 #slider1 {
-width: 840px;
-  	margin: 0 auto 0 auto;  
-padding:0;
+  width: 840px;
+  margin: 0 auto 0 auto;  
+  padding:0;
 }
-
 
 /*
  * To change the color scheme of slider change each 
@@ -78,7 +73,7 @@ padding:0;
 	width: 30px;
 	height: 30px;
 	text-indent: -999999px;
-	background: url(green_next.png) no-repeat 0 -30px;
+	background: url(..images/green_next.png) no-repeat 0 -30px;
 }
 
 /*previous button*/
@@ -90,78 +85,17 @@ padding:0;
 	width: 30px;
 	height: 30px;
 	text-indent: -999999px;
-	background: url(green_prev.png) no-repeat 0 -30px;
+	background: url(../images/green_prev.png) no-repeat 0 -30px;
 }
-
-/*pager links*/
-.bx-pager a {
-	margin-right: 5px;
-	color: #fff;
-	padding: 3px 8px 3px 6px;
-	font-size: 12px;
-	zoom:1;
-	background: url(gray_pager.png) no-repeat 0 -20px;
-}
-
-/*auto start button*/
-.bx-auto .start {
-	background: url(gray_auto.png) no-repeat 0 2px;
-	padding-left: 13px;
-}
-
-/*auto stop button*/
-.bx-auto .stop {
-	background: url(gray_auto.png) no-repeat 0 -14px;
-	padding-left: 13px;
-}
-
 /*
  * End color scheme styles
  */
-
 
 /*next/prev button hover state*/
 .bx-next:hover,
 .bx-prev:hover {
 	background-position: 0 0;
 }
-
-/*pager links hover and active states*/
-.bx-pager .pager-active,
-.bx-pager a:hover {
-	background-position: 0 0;
-}
-
-/*pager wrapper*/
-.bx-pager {
-	text-align:center;
-	padding-top: 7px;
-	font-size:12px;
-	color:#666;
-}
-
-/*captions*/
-.bx-captions {
-	text-align:center;
-	font-size: 12px;
-	padding: 7px 0;
-	color: #666;
-}
-
-/*auto controls*/
-.bx-auto {
-	text-align: center;
-	padding-top: 15px;
-}
-
-.bx-auto a {
-	color: #666;
-	font-size: 12px;
-}
-
-
-
-
 
 /* TipTip CSS - Version 1.2 */
 

@@ -1,32 +1,27 @@
-=== GIGX Sponsors Slides Widget ===
+=== GIGX Sponsors Slides ===
 Tags: custom, post, gallery, widget
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 0.0.3
+Stable tag: 0.1.0
 
-A rotating gallery widget using a custom post type for gallery content.
+Replace the Wordpress Links section with a jquery.bxSlider-based slideshow.
 
 == Description ==
 
-This plugin adds a Featured Slides menu to your WordPress dashboard. To add content to the rotating gallery:
+This plugin adds the GIGX Sonsors Slides menu to your WordPress dashboard. To add content to the slideshow:
 
-1. Add a new Gallery Post for each image/headline to be shown in the rotating gallery
-1. Attach one or more images to the gallery post by uploading the image(s) with the media uploader while editing the post
-1. Enter the title & content that you would like to overlay the image
-1. Publish the post(s)
-1. Add the Rotating Post Gallery widget to widget area on your home page
-1. Enter the number of Posts to rotate in the gallery (default = All).
-1. Choose the size of image to display in the gallery (based on your Media Settings)
-
-When multiple images are attached to a Gallery Post one of the images is randomly selected to be shown on each page view.
+1. Add a new Gallery Post for each Link, filling in the Link Title and Link URL field.
+2. Attach a featured image to the gallery through the media uploader.
+3. Publish the post(s).
+4. Add the GIGX Sponsors Slides widget to the widget area on your home page.
 
 [Plugin Page](http://gigx.co.uk/wordpress/plugins/gigx-sponsors-slides-widget/)
 
 Credits:
-This plugin is based on Post Gallery Widget by Ron Rennick 
-and uses jquery.cycle by malsup, jquery.clickable by Sander Aarts and jquery.tipTip by Drew Wilson.
-Sorting code is based on a tutorial by Ryan Marganti.
-Update code by Janis Elsts.
+This plugin is based on Post Gallery Widget by Ron Rennick ( http://wordpress.org/extend/plugins/post-gallery-widget ) 
+and uses jquery.bxslider by Steven Wanderski ( http://bxslider.com ) and jquery.tipTip by Drew Wilson ( http://code.drewwilson.com/entry/tiptip-jquery-plugin ).
+Sorting code is based on a tutorial by Ryan Marganti ( http://soulsizzle.com/jquery/create-an-ajax-sorter-for-wordpress-custom-post-types ).
+Update code by Janis Elsts ( http://w-shadow.com/blog/2010/09/02/automatic-updates-for-any-plugin ).
 
 == Installation ==
 
@@ -35,6 +30,8 @@ Update code by Janis Elsts.
 
 == Changelog ==
 
+= 0.1.0 =
+* Initial release
+
 = 0.0.3 =
 * Original version, forked from GIGX Slides v0.0.3
-

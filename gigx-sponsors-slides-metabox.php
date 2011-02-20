@@ -1,13 +1,12 @@
 <?php
-   # gigx slide meta box
+
+# creates Meta Box for GIGX Sponsors Slides
    
-# meta boxes class
-if (!class_exists('RW_Meta_Box')) require 'meta-boxes-2.4.php';
-# meta boxes class
+      # meta boxes class
+      if (!class_exists('RW_Meta_Box')) require 'meta-boxes-2.4.php';
+      # meta boxes class
    
-      # ax metabox
-      // Register meta boxes
-      
+      # Register meta boxes      
       $prefix = 'gigx_sponsors_slide_';
       
       $meta_boxes = array();
@@ -40,18 +39,4 @@ if (!class_exists('RW_Meta_Box')) require 'meta-boxes-2.4.php';
       	$my_box = new RW_Meta_Box($meta_box);
       }
       
-      // Validate value of meta fields
-      
-      // Define ALL validation methods inside this class
-      // and use the names of these methods in the definition of meta boxes (key 'validate_func' of each field)
-      
-      class GIGX_Sponsors_Slides_Validate {
-      	function check_text($text) {
-      		#if ($text != 'hello') {
-      		#	return false;
-      		#}
-      		return true;
-      	}
-      }
-      #ax metabox
 ?>

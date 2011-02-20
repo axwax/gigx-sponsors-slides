@@ -1,3 +1,6 @@
+// GIGX Sponsors Slides custom javascript
+// uses jquery.bxSlider, jquery.tipTip and gigx-sponsors-slides-sort
+
 var $gigx_sponsors_slides = jQuery.noConflict();
 
 $gigx_sponsors_slides(document).ready(function() {
@@ -6,7 +9,7 @@ $gigx_sponsors_slides(document).ready(function() {
     $gigx_sponsors_slides('.gigx-sponsors-slideshow').show("slow");
     
   // add slideshow  
-    $gigx_sponsors_slides('#slider1').bxSlider({
+    $gigx_sponsors_slides('.gigx-sponsors-slider').bxSlider({
         mode: 'horizontal',
         infiniteLoop: true,
         speed: 800,
@@ -18,10 +21,7 @@ $gigx_sponsors_slides(document).ready(function() {
     		moveSlideQty: 1,
         autoHover: true    
 		});   
-	
-	//make slides clickable
-    //$gigx_sponsors_slides('div.gigx-sponsors-slide').clickable();
-          
+	          
 	// tooltips 
     $gigx_sponsors_slides(".gigx-sponsors-slides-tip").tipTip({maxWidth: "200px", edgeOffset: 3, delay: 0, defaultPosition: "top",fadeIn: 100, fadeOut: 200});
 
