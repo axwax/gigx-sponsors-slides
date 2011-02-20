@@ -6,9 +6,10 @@ CSS for the gallery widget
 /* general slideshow styles */
 .gigx-sponsors-slideshow{
     clear: both;
-    width: 100%;
+    width: 1020px;
 
     padding:0; 
+    margin-bottom: 10px;
 
 display: none;       
 }   
@@ -18,7 +19,7 @@ display: none;
 
 .gigx-sponsors-slideshow .widget-title{
 z-index: 1;
-  
+margin-bottom: 10px;  
 }
 .gigx-sponsors-slideshow-wrapper {
 background-color:#fff;
@@ -28,9 +29,7 @@ color:#333333;
     -moz-box-shadow: 5px 5px 5px #333; 
     -webkit-box-shadow: 5px 5px 5px #333; 
     box-shadow: 5px 5px 5px #333;
-    background-image: -moz-linear-gradient(top, #fafafa, #fff); 
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fafafa),color-stop(1, #fff)); 
-    margin: 0 10px; 
+    margin: 0; 
     padding: 10px 0;   
 }
 .gigx-sponsors-slideshow-inner-wrapper {
