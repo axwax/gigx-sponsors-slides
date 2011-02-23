@@ -23,7 +23,7 @@
             'name' => 'Link Title',
             'desc' => 'Title of the page the slide links to',
             'id' => $prefix .'title',
-            'type' => 'text',
+            'type' => 'textarea',
             'std' => ''
       		),
       		array(
