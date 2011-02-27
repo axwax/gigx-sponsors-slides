@@ -35,30 +35,29 @@ GIGX Sponsors Slides CSS
   width: 840px;
 }    
 
-.gigx-sponsors-slideshow-wrapper li{
+
+.gigx-sponsors-slider {
+  width: 840px;
+  margin: 0 auto 0 auto;  
+  padding:0;
+}
+.gigx-sponsors-slider li{
   margin:0;
   padding:0;
   width:280px;
   text-align:center;
   display: table;
 }
-.gigx-sponsors-slideshow-wrapper a{
+.gigx-sponsors-slider a{
   margin:0;
   padding:0;
   display: table-cell; vertical-align: middle;
 }
-.gigx-sponsors-slideshow-wrapper li a img{
+.gigx-sponsors-slider a img{
   margin:0;
   padding:0;
   border:0;
 }
-
-#slider1 {
-  width: 840px;
-  margin: 0 auto 0 auto;  
-  padding:0;
-}
-
 /*
  * To change the color scheme of slider change each 
  * background property for each of the five styles below
