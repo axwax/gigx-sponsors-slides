@@ -41,7 +41,7 @@ require 'gigx-sponsors-slides-sorting.php';
 # /gigx_sponsors_slide sorting functions
 
 /* Customise columns shown in list of custom post type */
-add_action("manage_posts_custom_column", "my_custom_columns");
+
 add_filter("manage_edit-gigx_sponsors_slide_columns", "my_website_columns");
  
 function my_website_columns($columns)
@@ -54,8 +54,44 @@ function my_website_columns($columns)
     );
     return $columns;
 }
- 
-function my_custom_columns($column)
+# make linktitle column sortable
+add_filter( 'manage_edit-gigx_sponsors_slide_sortable_columns', 'linktitle_column_register_sortable' );
+function linktitle_column_register_sortable( $columns ) {
+	$columns['linktitle'] = 'linktitle'; 
+	return $columns;
+}
+add_filter( 'request', 'linktitle_column_orderby' );
+function linktitle_column_orderby( $vars ) {
+	if ( isset( $vars['orderby'] ) && 'linktitle' == $vars['orderby'] ) {	
+		$vars = array_merge( $vars, array(
+			'meta_key' => 'gigx_sponsors_slide_title',
+			'orderby' => 'meta_value'
+		) );				
+	} 
+	return $vars;
+}
+
+# make url column sortable
+add_filter( 'manage_edit-gigx_sponsors_slide_sortable_columns', 'url_column_register_sortable' );
+function url_column_register_sortable( $columns ) {
+	$columns['url'] = 'url'; 
+	return $columns;
+}
+add_filter( 'request', 'url_column_orderby' );
+function url_column_orderby( $vars ) {
+	if ( isset( $vars['orderby'] ) && 'url' == $vars['orderby'] ) {	
+		$vars = array_merge( $vars, array(
+			'meta_key' => 'gigx_sponsors_slide_url',
+			'orderby' => 'meta_value'
+		) );				
+	} 
+	return $vars;
+}
+
+
+// Display the columns' content
+add_action("manage_posts_custom_column", "gigx_sponsors_slides_custom_columns"); 
+function gigx_sponsors_slides_custom_columns($column)
 {
     global $post;
     if ("ID" == $column) echo $post->ID;
