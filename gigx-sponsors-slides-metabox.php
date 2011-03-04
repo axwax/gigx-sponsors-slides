@@ -3,8 +3,17 @@
 # creates Meta Box for GIGX Sponsors Slides
    
       # meta boxes class
-      if (!class_exists('RW_Meta_Box')) require 'meta-boxes-2.4.php';
+      if (!class_exists('RW_Meta_Box')) require 'meta-box.php';
       # meta boxes class
+      
+      # change textarea field
+      class GIGX_Meta_Box extends RW_Meta_Box {
+        	function show_field_textarea($field, $meta) {
+        		echo "<th style='width:20%'><label for='{$field['id']}'>{$field['name']}</label></th>
+        			  <td><textarea name='{$field['id']}' cols='60' rows='5' style='width:97%'>$meta</textarea><br />{$field['desc']}</td>";
+        	}      
+      }
+      
    
       # Register meta boxes      
       $prefix = 'gigx_sponsors_slide_';
@@ -36,7 +45,7 @@
       	)
       );
       foreach ($meta_boxes as $meta_box) {
-      	$my_box = new RW_Meta_Box($meta_box);
+      	$my_box = new GIGX_Meta_Box($meta_box);
       }
       
 ?>
