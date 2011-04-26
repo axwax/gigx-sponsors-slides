@@ -12,6 +12,7 @@ GIGX Sponsors Slides CSS
 }   
 .gigx-sponsors-slideshow a {
   outline: 0;
+  padding: 0;  
 }
 .gigx-sponsors-slideshow .widget-title{
   z-index: 1;
