@@ -9,7 +9,7 @@
  * @author Soul
  **/
 function gigx_sponsors_slides_enable_sort() {
-    add_submenu_page('edit.php?post_type=gigx_sponsors_slide', 'Sort Slides', 'Sort', 'edit_posts', basename(__FILE__), 'gigx_sponsors_slides_sort');
+    add_submenu_page('edit.php?post_type=gigx_sponsors_slide', 'Sort Sponsors Slides', 'Sort', 'edit_posts', basename(__FILE__), 'gigx_sponsors_slides_sort');
 }
 add_action('admin_menu' , 'gigx_sponsors_slides_enable_sort'); 
  
@@ -24,7 +24,7 @@ function gigx_sponsors_slides_sort() {
 	$slides = new WP_Query('post_type=gigx_sponsors_slide&posts_per_page=-1&orderby=menu_order&order=ASC');
 ?>
 	<div class="wrap">
-	<h3>Sort Slides <img src="<?php bloginfo('url'); ?>/wp-admin/images/loading.gif" id="loading-animation" /></h3>
+	<h3>Sort Sponsors Slides <img src="<?php bloginfo('url'); ?>/wp-admin/images/loading.gif" id="loading-animation" /></h3>
 	<ul id="gigx-sponsors-slides-list">
 	<?php 
     while ( $slides->have_posts() ) : $slides->the_post();	      
