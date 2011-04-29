@@ -26,8 +26,12 @@ function gigx_sponsors_slides_sort() {
 	<div class="wrap">
 	<h3>Sort Slides <img src="<?php bloginfo('url'); ?>/wp-admin/images/loading.gif" id="loading-animation" /></h3>
 	<ul id="gigx-sponsors-slides-list">
-	<?php while ( $slides->have_posts() ) : $slides->the_post(); ?>
-		<li id="<?php the_id(); ?>"><?php the_title(); ?></li>			
+	<?php 
+    while ( $slides->have_posts() ) : $slides->the_post();	      
+        $img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_id()),array(48,48),false);
+  			$image = '<img class="alignright" src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$title.'" title="'.$title.'"/>';     
+	  ?>
+		<li id="<?php the_id(); ?>"><?php echo $image.get_post_meta(get_the_id(), 'gigx_sponsors_slide_url', true). '<br/><a style="font-size: 11px;text-decoration: none;font-weight:normal;" href="post.php?post='.get_the_id().'&action=edit">edit</a>';?></li>			
 	<?php endwhile; ?>
 	</div><!-- End div#wrap //-->
  
