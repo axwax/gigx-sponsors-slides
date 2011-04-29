@@ -49,7 +49,7 @@ class GIGX_Sponsors_Slides_Post_Type {
     		# custom icon
         add_action('admin_head', array( &$this,'gigx_sponsors_slide_icon'));
         # custom thumbnail size
-        add_image_size( 'gigx-sponsors-slide', 200, 100 );
+        add_image_size( 'gigx-sponsors-slide', 250, 100 );
         
         # change title text (only works for wp >=3.1)
         add_filter( 'enter_title_here', array( &$this, 'gigx_change_default_title') );            
