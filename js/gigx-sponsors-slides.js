@@ -27,8 +27,6 @@ $gigx_sponsors_slides(document).ready(function() {
 
   // remove duplicate tooltip on image
     $gigx_sponsors_slides(".gigx-sponsors-slides-tip a img").removeAttr('title').removeAttr('alt');
-
-          
 });
 
 
