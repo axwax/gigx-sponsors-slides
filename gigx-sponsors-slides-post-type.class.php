@@ -15,6 +15,7 @@ class GIGX_Sponsors_Slides_Post_Type {
   		'taxonomies' => array(),
   		'public' => true,
   		'show_ui' => true,
+		'show_in_menu' => 'edit.php?post_type=gigx_slide',
   		'rewrite' => false,
   		'query_var' => false,
   		'supports' => array( 'thumbnail' )
