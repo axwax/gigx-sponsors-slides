@@ -78,7 +78,7 @@ class GIGX_Sponsors_Slides_Widget extends WP_Widget {
 			//wp_enqueue_style( 'gigx-sponsors-slides-css', $url . 'css/style.css' );
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'gigx-bxslider-js', $url . 'js/jquery.bxSlider.min.js', array( 'jquery' ), '1.4', true );
-      wp_enqueue_script( 'gigx-tooltip-js', $url . 'js/jquery.tipTip.minified.js', array( 'jquery' ), '1.4', true );
+			wp_enqueue_script( 'gigx-tooltip-js', $url . 'js/jquery.tipTip.minified.js', array( 'jquery' ), '1.4', true );
 			wp_enqueue_script( 'gigx-sponsors-slides-js', $url . 'js/gigx-sponsors-slides.js', false, false, true );
 		}
 	}

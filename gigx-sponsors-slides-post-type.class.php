@@ -1,5 +1,4 @@
 <?php
-
 # creates GIGX Sponsors Slides post type
 # and contains query function for widget
 
@@ -9,8 +8,8 @@ class GIGX_Sponsors_Slides_Post_Type {
   	var $attachments = null;
   
   	var $post_type = array(
-  		'label' => 'GIGX Sponsors Slides',
-  		'singular_label' => 'GIGX Sponsors Slide',
+  		'label' => 'Sponsor Slides',
+  		'singular_label' => 'Sponsor Slide',
   		'menu_position' => '1',
   		'taxonomies' => array(),
   		'public' => true,
@@ -70,8 +69,8 @@ class GIGX_Sponsors_Slides_Post_Type {
       	<?php if (($_GET['post_type'] == 'gigx_sponsors_slide') || ($post_type == 'gigx_sponsors_slide')) : ?>
       	#icon-edit { background:transparent url('<?php echo $url .'images/icon32x32.png';?>') no-repeat; }		
       	<?php endif; ?>
-      	#adminmenu #menu-posts-gigxsponsorsslide div.wp-menu-image{background: url("<?php echo $url .'images/icon.png';?>") no-repeat 6px -17px !important;}
-      	#adminmenu #menu-posts-gigxsponsorsslide:hover div.wp-menu-image,#adminmenu #menu-posts-gallery.wp-has-current-submenu div.wp-menu-image{background-position:6px 7px!important;}	    	
+      	#menu-posts-gigx_sponsors_slide .wp-menu-image{background: url("<?php echo $url .'images/icon.png';?>") no-repeat 6px -17px !important;}
+      	#menu-posts-gigx_sponsors_slide:hover div.wp-menu-image,#menu-posts-gigx_sponsors_slide.wp-has-current-submenu div.wp-menu-image{background-position:6px 7px!important;}	    	
       	
         </style>
         <?php
@@ -79,12 +78,26 @@ class GIGX_Sponsors_Slides_Post_Type {
   
 
   	  function query_posts( $num_posts = -1, $orderby = 'menu_order' ) {
-  		$query = sprintf( 'showposts=%d&post_type=%s&orderby=%s&order=ASC', $num_posts, $this->post_type_name,$orderby );
-  		$posts = new WP_Query( $query );  
+		$wpdb =& $GLOBALS['wpdb'];
+		$the_slides= $wpdb->get_results("SELECT   wp_posts.* FROM wp_posts  WHERE 1=1  AND wp_posts.post_type = 'gigx_sponsors_slide' AND (wp_posts.post_status = 'publish' OR wp_posts.post_status = 'private')  ORDER BY menu_order ASC");
   		$gallery = array();
   		$child = array( 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'none' );
-  		while( $posts->have_posts() ) {
-  			$posts->the_post();
+
+		foreach ($the_slides as $slide) {
+			$child['post_parent'] = $slide->ID;
+			$p = new stdClass();
+			$p->post_title= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_title', true);
+                        $p->post_url= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_url', true);
+			$img=wp_get_attachment_image_src (get_post_thumbnail_id($slide->ID),'gigx-sponsors-slide',false);
+  			$p->image = '<img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/>';
+  			$gallery[] = $p;  			
+		}
+		
+		// the old args: $args = sprintf( 'showposts=%d&post_type=%s&orderby=%s&order=ASC', $num_posts, $this->post_type_name,$orderby ); 		
+		// the old query: $the_slides = new WP_Query( $args );  
+		/* the old loop
+  		while( $the_slides->have_posts() ) {
+  			$the_slides->the_post();
   			$child['post_parent'] = get_the_ID(); 
   			
   
@@ -92,19 +105,20 @@ class GIGX_Sponsors_Slides_Post_Type {
   			//$p->post_title = get_the_title();
   			//$p->post_excerpt = get_the_content();
   			$p->post_title= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_title', true);
-        $p->post_url= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_url', true);
+                        $p->post_url= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_url', true);
   			//$p->post_tab= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_tab', true);
-        //$p->post_limit= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_limit', false);      
+			//$p->post_limit= get_post_meta($child['post_parent'], 'gigx_sponsors_slide_limit', false);      
         
-        if( ( $c = count( $attachments ) ) > 1 ) {
+			if( ( $c = count( $attachments ) ) > 1 ) {
   				$x = rand( 1, $c );
   				while( $c > $x++ )
   					next( $attachments );
   			}
-  			$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'gigx-sponsors-slide',false);
+  			$img=wp_get_attachment_image_src (get_post_thumbnail_id($p->ID),'gigx-sponsors-slide',false);
   			$p->image = '<img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/>';
   			$gallery[] = $p;
   		}
+		*/	
   		wp_reset_query();
   		return $gallery;
   	}
