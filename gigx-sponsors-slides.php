@@ -14,9 +14,9 @@ Update code by Janis Elsts ( http://w-shadow.com/blog/2010/09/02/automatic-updat
 */
 
 # check for updates
-require 'plugin-update-checker.php';
-$checkForUpdate = new PluginUpdateChecker('http://gigx.co.uk/wordpress/update/gigx-sponsors-slides.json', __FILE__, 'gigx-sponsors-slides', 1);
-$checkForUpdate->checkForUpdates();
+//require 'plugin-update-checker.php';
+//$checkForUpdate = new PluginUpdateChecker('http://gigx.co.uk/wordpress/update/gigx-sponsors-slides.json', __FILE__, 'gigx-sponsors-slides', 1);
+//$checkForUpdate->checkForUpdates();
 # /check for updates
 
 # meta box
